@@ -111,6 +111,10 @@ pub fn newtonian_accel(pos: Vec3, bh: &BlackHole) -> Vec3 {
     let a_mag = -units::G * bh.mass_kg / (r * r);
     pos.normalized() * a_mag
 }
+// Newton orbital speed: sqrt(GM/r0)
+pub fn newton_orbit_speed(bh: &BlackHole, radius: f64) -> f64 {
+    (units::G * bh.mass_kg / radius).sqrt()
+}
 
 // PW-accel
 pub fn pw_accel(pos: Vec3, bh: &BlackHole) -> Vec3 {
@@ -121,6 +125,10 @@ pub fn pw_accel(pos: Vec3, bh: &BlackHole) -> Vec3 {
     }
     let a_mag = -units::G * bh.mass_kg / ((r - r_s) * (r - r_s));
     pos.normalized() * a_mag
+}
+// PW orbital speed
+pub fn pw_orbital_speed(bh: &BlackHole, radius: f64) -> f64 {
+    (units::G * bh.mass_kg * radius).sqrt() / (radius - bh.r_s())
 }
 
 #[cfg(test)]
