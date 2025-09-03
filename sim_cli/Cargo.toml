@@ -1,7 +1,11 @@
 [package]
 name = "sim_cli"
-version = "0.1.0"
-edition = "2024"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
 
 [dependencies]
 grav_core = { path = "../grav_core"}
+anyhow.workspace = true
+clap = { version = "4", features = ["derive"] }
