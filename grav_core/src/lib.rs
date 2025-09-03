@@ -3,6 +3,7 @@ use std::ops::{Add, Div, Mul, Sub}; // for op def on Vec3
 
 pub mod integrators;
 
+
 // basic units we will need
 pub mod units {
     // SI constants
@@ -47,7 +48,7 @@ impl Vec3 {
     }
     pub fn cross(&self, r: &Self) -> Self {
         Self::new(
-            self.y * r.z - self.z - r.y,
+            self.y * r.z - self.z * r.y,
             self.z * r.x - self.x * r.z,
             self.x * r.y - self.y * r.x,
         )
